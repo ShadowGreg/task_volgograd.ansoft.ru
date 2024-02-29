@@ -1,0 +1,6 @@
+@task_volgograd.ansoft.ru_HostAddress = http://localhost:5278
+
+GET {{task_volgograd.ansoft.ru_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
