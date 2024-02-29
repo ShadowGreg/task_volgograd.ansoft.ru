@@ -1,9 +1,8 @@
-﻿using System.Dynamic;
-using System.Text;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using task_volgograd.ansoft.ru.domain.Abstractions.Repositories;
 using task_volgograd.ansoft.ru.domain.Domain.Message;
 using task_volgograd.ansoft.ru.Models;
+using task_volgograd.ansoft.ru.Services;
 
 namespace task_volgograd.ansoft.ru.Controllers
 {
@@ -23,38 +22,20 @@ namespace task_volgograd.ansoft.ru.Controllers
         {
             try
             {
-                var attachments = new List<Attachment>();
-                var attachmentsGuid = new List<string>();
-
-                if (message.Attachments != null)
+                if (String.IsNullOrEmpty(message.Id))
                 {
-                    foreach (var attach in message.Attachments)
-                    { }
+                    message.Id = GetGuid();
                 }
 
+                var convertor = new MessageToModel();
+                var newMessage = convertor.ConvertModelToMessage(message).Result;
 
-                var newMessage = new Message {
-                    Id = GetGUID(),
-                    Email = message.Email,
-                    // PhoneNumber = message.PhoneNumber,
-                    // MessageType = message.MessageType,
-                    // Subject = message.Subject,
-                    // Content = message.Content,
-                    // SendResult = "Sent",
-                };
-
-
-                var result = _messageService.SendMessageAsync(newMessage);
+                _messageService.SendMessageAsync(newMessage);
                 return Ok("Message GUID: " + newMessage.Id);
 
-                string? GetGUID()
+                string? GetGuid()
                 {
-                    if (message.Id != null && message.Id is "" or "string")
-                    {
-                        return Guid.NewGuid().ToString();
-                    }
-
-                    return message.Id;
+                    return Guid.NewGuid().ToString();
                 }
             }
             catch (Exception ex)

@@ -1,11 +1,11 @@
 ﻿using task_volgograd.ansoft.ru.domain.Domain.Message;
 using task_volgograd.ansoft.ru.Models;
 
-namespace task_volgograd.ansoft.ru.services
+namespace task_volgograd.ansoft.ru.Services
 {
     public class MessageToModel
     {
-        public MessageModel ConvertMessageToModel(Message message)
+        public Task<MessageModel> ConvertMessageToModel(Message message)
         {
             ArgumentNullException.ThrowIfNull(message);
             List<AttachmentModel> attachments = new();
@@ -35,10 +35,10 @@ namespace task_volgograd.ansoft.ru.services
                                 .ConvertAttachmentToModel(attacment, messageModel)
                     ));
 
-            return messageModel;
+            return Task.FromResult(messageModel);
         }
 
-        public Message ConvertModelToMessage(MessageModel messageModel)
+        public Task<Message> ConvertModelToMessage(MessageModel messageModel)
         {
             ArgumentNullException.ThrowIfNull(messageModel);
             if (messageModel.Attachments == null)
@@ -68,7 +68,7 @@ namespace task_volgograd.ansoft.ru.services
                                 .ConvertModelToAttachment(attachment, message)
                     ));
 
-            return message;
+            return Task.FromResult(message);
         }
     }
 }

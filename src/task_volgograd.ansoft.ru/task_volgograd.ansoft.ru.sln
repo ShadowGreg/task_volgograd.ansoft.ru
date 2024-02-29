@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task_volgograd.ansoft.ru.do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task_volgograd.ansoft.ru.dataAccess", "..\task_volgograd.ansoft.ru.dataAccess\task_volgograd.ansoft.ru.dataAccess.csproj", "{81E315C8-F805-4E1A-876A-E0B470462C9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task_volgograd.ansoft.ru.services", "..\task_volgograd.ansoft.ru.services\task_volgograd.ansoft.ru.services.csproj", "{F081E8CE-C5C6-45A4-8F4A-5EB90276EA2F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +24,5 @@ Global
 		{81E315C8-F805-4E1A-876A-E0B470462C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81E315C8-F805-4E1A-876A-E0B470462C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81E315C8-F805-4E1A-876A-E0B470462C9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F081E8CE-C5C6-45A4-8F4A-5EB90276EA2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F081E8CE-C5C6-45A4-8F4A-5EB90276EA2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F081E8CE-C5C6-45A4-8F4A-5EB90276EA2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F081E8CE-C5C6-45A4-8F4A-5EB90276EA2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

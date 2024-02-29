@@ -1,7 +1,7 @@
 ﻿using task_volgograd.ansoft.ru.domain.Domain.Message;
 using task_volgograd.ansoft.ru.Models;
 
-namespace task_volgograd.ansoft.ru.services
+namespace task_volgograd.ansoft.ru.Services
 {
     public class AttachmentToModel
     {
