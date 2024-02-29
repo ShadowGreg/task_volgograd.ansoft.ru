@@ -9,12 +9,20 @@ namespace task_volgograd.ansoft.ru.Services
         {
             ArgumentNullException.ThrowIfNull(attachment);
             ArgumentNullException.ThrowIfNull(message);
+
+            if (attachment.AttachmentFile == null)
+            {
+                return null!;
+            }
+
+            string attachmentFile = Convert.ToBase64String(attachment.AttachmentFile);
             return new AttachmentModel
             {
                 Id = attachment.Id,
-                AttachmentFile = Convert.ToBase64String(attachment.AttachmentFile),
-                Message = message
+                Message = message,
+                AttachmentFile = attachmentFile
             };
+
         }
 
         public Attachment ConvertModelToAttachment(AttachmentModel? attachment, Message? message)
