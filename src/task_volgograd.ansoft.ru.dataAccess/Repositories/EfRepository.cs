@@ -1,4 +1,5 @@
-﻿using task_volgograd.ansoft.ru.domain.Abstractions.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using task_volgograd.ansoft.ru.domain.Abstractions.Repositories;
 using task_volgograd.ansoft.ru.domain.Domain;
 using task_volgograd.ansoft.ru.domain.Domain.Message;
 
@@ -17,9 +18,15 @@ namespace task_volgograd.ansoft.ru.dataAccess.Repositories
             await _dataContext.SaveChangesAsync();
         }
 
-        public async Task UpdateMessageAsync(T message)
+        public async Task<Message?> GetMessageAsync(Guid messageId)
         {
-            var entity = await _dataContext.Set<T>().FindAsync(message.Id);
+            var massage = await _dataContext.Set<Message>().FirstOrDefaultAsync(x => x.Id == messageId);
+            return massage;
+        }
+
+        public async Task UpdateMessageAsync(Guid messageId,T message)
+        {
+            var entity = await _dataContext.Set<T>().FindAsync(messageId);
             if (entity != null)
             {
                 _dataContext.Entry(entity).CurrentValues.SetValues(message);

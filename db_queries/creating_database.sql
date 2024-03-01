@@ -1,12 +1,12 @@
 ﻿CREATE DATABASE 'D:\\data.fdb' page_size 8192
         user 'SYSDBA' password 'masterkey';
 
-CONNECT 'D:\\data.fdb' USER 'SYSDBA' PASSWORD 'masterkey';
+CONNECT 'data.fdb' USER 'SYSDBA' PASSWORD 'masterkey';
 
 SET SQL DIALECT 3;
 
 CREATE TABLE Messages (
-                          MessageGuid VARCHAR(36) NOT NULL PRIMARY KEY,
+                          MessageId UUID PRIMARY KEY,
                           Email VARCHAR(255),
                           PhoneNumber VARCHAR(20),
                           MessageType VARCHAR(50),
@@ -17,8 +17,8 @@ CREATE TABLE Messages (
 
 
 CREATE TABLE Attachments (
-                             AttachmentId BIGINT NOT NULL PRIMARY KEY,
-                             MessageGuid VARCHAR(36),
+                             AttachmentId  UUID PRIMARY KEY,
+                             MessageId UUID,
                              AttachmentFile BLOB,
-                             FOREIGN KEY (MessageGuid) REFERENCES Messages(MessageGuid)
+                             FOREIGN KEY (MessageId) REFERENCES Messages(MessageId)
 );

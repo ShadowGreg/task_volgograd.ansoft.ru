@@ -7,8 +7,9 @@ namespace task_volgograd.ansoft.ru.domain.Abstractions.Repositories
         where T : BaseEntity
     {
         Task SendMessageAsync(T message);
+        Task<Message?> GetMessageAsync(Guid messageId);
 
-        Task UpdateMessageAsync(T message);
+        Task UpdateMessageAsync(Guid messageId, T message);
 
         Task SendMessageMultipleTimesAsync(T message, int numberOfTimes, int delaySeconds);
     }
