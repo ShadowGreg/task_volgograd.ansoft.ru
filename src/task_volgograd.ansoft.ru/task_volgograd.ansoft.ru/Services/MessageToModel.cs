@@ -41,15 +41,18 @@ namespace task_volgograd.ansoft.ru.Services
         public Task<Message> ConvertModelToMessage(MessageModel messageModel)
         {
             ArgumentNullException.ThrowIfNull(messageModel);
-            if (messageModel.Attachments == null)
+            if (messageModel.Attachments == null )
             {
                 ArgumentNullException.ThrowIfNull(messageModel.Attachments);
+            } else if (messageModel.Id == null)
+            {
+                messageModel.Id = Guid.NewGuid();
             }
 
             List<Attachment> attachments = new();
             var message = new Message
             {
-                Id = messageModel.Id,
+                Id = messageModel.Id!.Value,
                 PhoneNumber = messageModel.PhoneNumber,
                 MessageType = messageModel.MessageType,
                 Subject = messageModel.Subject,

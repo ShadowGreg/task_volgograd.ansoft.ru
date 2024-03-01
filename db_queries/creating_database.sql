@@ -1,6 +1,7 @@
-﻿CREATE DATABASE 'task_volgograd_ansoft_ru.fdb';
+﻿CREATE DATABASE 'D:\\data.fdb' page_size 8192
+        user 'SYSDBA' password 'masterkey';
 
-SET NAMES UTF8;
+CONNECT 'D:\\data.fdb' USER 'SYSDBA' PASSWORD 'masterkey';
 
 SET SQL DIALECT 3;
 

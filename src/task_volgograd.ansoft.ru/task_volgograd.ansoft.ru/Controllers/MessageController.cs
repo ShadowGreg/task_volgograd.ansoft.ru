@@ -20,9 +20,7 @@ namespace task_volgograd.ansoft.ru.Controllers
         [HttpPost("msg")]
         public IActionResult SendMessageAsync([FromBody] MessageModel message)
         {
-            try
-            {
-                if (String.IsNullOrEmpty(message.Id))
+                if (message.Id == null)
                 {
                     message.Id = GetGuid();
                 }
@@ -33,15 +31,10 @@ namespace task_volgograd.ansoft.ru.Controllers
                 _messageService.SendMessageAsync(newMessage);
                 return Ok("Message GUID: " + newMessage.Id);
 
-                string? GetGuid()
+                Guid GetGuid()
                 {
-                    return Guid.NewGuid().ToString();
+                    return Guid.NewGuid();
                 }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Error sending message: " + ex.Message);
-            }
         }
 
         [HttpPut("msg/{messageId}")]

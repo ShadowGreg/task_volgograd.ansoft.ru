@@ -1,7 +1,7 @@
 ﻿using task_volgograd.ansoft.ru.domain.Domain.Message;
 using task_volgograd.ansoft.ru.Models;
 
-namespace task_volgograd.ansoft.ru.Services
+ namespace task_volgograd.ansoft.ru.Services
 {
     public class AttachmentToModel
     {
@@ -18,8 +18,6 @@ namespace task_volgograd.ansoft.ru.Services
             string attachmentFile = Convert.ToBase64String(attachment.AttachmentFile);
             return new AttachmentModel
             {
-                Id = attachment.Id,
-                Message = message,
                 AttachmentFile = attachmentFile
             };
 

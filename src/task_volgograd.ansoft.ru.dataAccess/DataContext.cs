@@ -28,7 +28,7 @@ namespace task_volgograd.ansoft.ru.dataAccess
             modelBuilder.Entity<Message>()
                 .HasMany(m => m.Attachments)
                 .WithOne(a => a.Message)
-                .HasForeignKey(a => a.MessageGuid)
+                .HasForeignKey(a => a.MessageId)
                 .IsRequired();
         }
     }

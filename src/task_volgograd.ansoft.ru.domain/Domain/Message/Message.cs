@@ -10,6 +10,5 @@
         public string? SendResult { get; set; }
 
         public ICollection<Attachment>? Attachments { get; set; }
-        
     }
 }
